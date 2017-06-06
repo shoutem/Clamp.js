@@ -113,8 +113,6 @@
       return Math.round(parseFloat(lh));
     }
 
-
-    // MEAT AND POTATOES (MMMM, POTATOES...) ______________________________________
     var splitOnChars = opt.splitOnChars.slice(0),
       splitChar = splitOnChars[0],
       chunks,
@@ -125,8 +123,8 @@
      */
     function getLastChild(elem) {
       //Current element has children, need to go deeper and get last child as a text node
-      if (elem.lastChild.children && elem.lastChild.children.length > 0) {
-        return getLastChild(Array.prototype.slice.call(elem.children).pop());
+      if (elem.lastChild.childNodes && elem.lastChild.childNodes.length > 0) {
+        return getLastChild(Array.prototype.slice.call(elem.childNodes).pop());
       }
       //This is the absolute last child, a text node, but something's wrong with it. Remove it and keep trying
       else if (!elem.lastChild || !elem.lastChild.nodeValue || elem.lastChild.nodeValue === '' || elem.lastChild.nodeValue == opt.truncationChar) {
